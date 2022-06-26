@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,15 +19,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class testautomatico01 {
 
     private WebDriver driver;
-
+    @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "src\\test\\java\\chromeDriver\\chromedriver.exe");
         driver=new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.google.com");
+        driver.get("http://opencart.abstracta.us/");
 
     }
-
+    @Test
     public void test(){
         WebElement elemento=driver.findElement(By.name("q"));
         elemento.clear();
@@ -33,7 +36,7 @@ public class testautomatico01 {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         assertEquals("Quality Assurance - Google Search", driver.getTitle());
     }
-
+    @AfterEach
     public void tearDown() {
         driver.quit();
     }

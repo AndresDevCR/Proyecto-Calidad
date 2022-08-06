@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+Parte de Mario Molina
+Revisar
  */
 package tst01;
 
@@ -20,8 +20,11 @@ public class testautomatico01 {
 
     private WebDriver driver;
     @BeforeEach
+    
     public void setup() {
+        System.out.println("Holaaaaaaaa!");
         System.setProperty("webdriver.chrome.driver", "src\\test\\java\\chromeDriver\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://opencart.abstracta.us/");

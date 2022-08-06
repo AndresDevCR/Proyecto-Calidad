@@ -5,10 +5,6 @@ Verificar que el sistema actualice correctamente el tipo de moneda
  */
 package tst01;
 
-import dev.failsafe.Timeout;
-import java.time.Duration;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +19,6 @@ public class testMario {
 
     private WebDriver driver;
     @BeforeEach
-    
     
     public void abrirChrome (){
         System.out.println("Iniciamos Prueba de tipos de moneda!");
@@ -48,7 +43,7 @@ public class testMario {
         mac.click();
         
         //Baja el scroll para ver cuanto precio tiene la Mac (inicialmente en dolares)
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scroll(0,300)");
         

@@ -99,7 +99,7 @@ public class TestAndres {
 
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.MINUTES);
         driver.close();

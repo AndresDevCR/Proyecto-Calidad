@@ -27,11 +27,11 @@ public class TestAndres {
     }
 
     @Test
-    public void Register(){
+    public void Register() {
         // se ingresa a la pagina de registro
-        elemento= driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]"));
+        elemento = driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]"));
         elemento.click();
-        elemento=  driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a"));
+        elemento = driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a"));
         elemento.click();
         // se ingresa los datos del usuario
         driver.findElement(By.xpath("//*[@id=\"input-firstname\"]")).sendKeys("Andres");
@@ -40,10 +40,11 @@ public class TestAndres {
         driver.findElement(By.xpath("//*[@id=\"input-telephone\"]")).sendKeys("123456789");
         driver.findElement(By.xpath("//*[@id=\"input-password\"]")).sendKeys("123456789");
         driver.findElement(By.xpath("//*[@id=\"input-confirm\"]")).sendKeys("123456789");
-        elemento=  driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[1]"));
+        elemento = driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[1]"));
         elemento.click();
         // se verifica que el usuario se registro correctamente
         driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[2]")).click();
+        assert driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[2]")).isDisplayed();
     }
 
     @Test
@@ -72,44 +73,35 @@ public class TestAndres {
         // selecciona el articulo y hace la peticion de agregar al carrito
 
         // entra al primer producto y lo compra
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[1]/div/div[2]/div[1]/h4/a"));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
         driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[1]/div/div[2]/div[1]/h4/a")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
 
         // selecciona la opcion de comprar
+        driver.findElement(By.xpath("//*[@id=\"input-quantity\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"input-quantity\"]")).sendKeys("100");
         driver.findElement(By.xpath("//*[@id=\"button-cart\"]")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
 
-        // Vuelve a la pagina principal
-        driver.findElement(By.xpath("//*[@id=\"logo\"]/h1/a")).click();
+
+        // muestra el carrito de compras
+
+        driver.findElement(By.xpath("//*[@id=\"product-product\"]/div[1]/a[2]")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
 
+        // Continua comprando
+        driver.findElement(By.xpath("/html/body/div[2]/div/div/div[3]/div[1]/a")) .click();
 
 
-        // Busca otra opcion de compra
-        driver.findElement(By.xpath("//*[@id=\"search\"]/input")).sendKeys("Samsung");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-        driver.findElement(By.xpath("//*[@id=\"search\"]/span/button")).click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
 
-
-        // selecciona el articulo y hace la peticion de agregar al carrito
-        driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[1]/div/div[2]/div[1]/h4/a")).click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-        driver.findElement(By.xpath("//*[@id=\"button-cart\"]")).click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-
-        // Vuelve a la pagina principal
-        driver.findElement(By.xpath("//*[@id=\"logo\"]/h1/a")).click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-
-        // selecciona el carrito y hace la peticion de ver el carrito
-        driver.findElement(By.xpath("//*[@id=\"button-cart\"]")).click();
 
     }
 
     @After
     public void tearDown() {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.MINUTES);
+        driver.close();
         driver.quit();
     }
 

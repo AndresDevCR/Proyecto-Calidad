@@ -34,9 +34,13 @@ public class TestAndres {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         elemento.sendKeys("Macbook");
         driver.findElement(By.xpath("//*[@id=\"search\"]/span/button")).click();
+        // la pagina carga las opciones de busqueda
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-          //click sobre el primer producto
-        driver.findElement(By.xpath("/html/body/div[2]/div/div/div[3]/div[1]/div/div[2]/div[2]/button[1]")).click();
+        // entraa al primer producto y lo compra
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[1]/div/div[2]/div[1]/h4/a")).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
 
     }
 

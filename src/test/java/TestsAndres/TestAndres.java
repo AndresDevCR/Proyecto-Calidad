@@ -87,7 +87,8 @@ public class TestAndres {
 
         // muestra el carrito de compras
 
-        driver.findElement(By.xpath("//*[@id=\"product-product\"]/div[1]/a[2]")).click();
+        elemento= driver.findElement(By.xpath("//*[@id=\"product-product\"]/div[1]/a[2]"));
+        elemento.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
 
         // Continua comprando

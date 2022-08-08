@@ -40,15 +40,9 @@ public class TestAndres {
         driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div[1]/div/div[2]/div[1]/h4/a")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-
-
     }
 
 
-    @AfterEach
-    public void tearDown() {
-        driver.quit();
-    }
 
 
 }

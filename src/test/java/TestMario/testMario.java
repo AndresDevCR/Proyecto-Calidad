@@ -3,7 +3,7 @@ Parte de Mario Molina
 TC ID: 6
 Verificar que el sistema actualice correctamente el tipo de moneda
  */
-package tst01;
+package TestMario;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,7 +59,7 @@ public class testMario {
         //Se copia el valor en dolares en la variable "dolar" para al final realizar una comparación entre el tipo de monedas
         Thread.sleep(5000);
         String dolar = driver.findElement(By.xpath("(//p[@class='price'])[1]")).getText();
-        //System.out.println(dolar);
+        System.out.println(dolar);
 
         //Se abre la opción para cambiar el tipo de moneda
         Thread.sleep(5000);
@@ -79,7 +79,7 @@ public class testMario {
         //Se copia el valor en Euros en la variable "euro"
         Thread.sleep(5000);
         String euro = driver.findElement(By.xpath("(//p[@class='price'])[1]")).getText();
-        //System.out.println(euro);
+        System.out.println(euro);
 
         //Se abre la opción para cambiar el tipo de moneda
         Thread.sleep(5000);
@@ -91,15 +91,15 @@ public class testMario {
         WebElement monedaLibra = driver.findElement(By.xpath("(//button[normalize-space()='£ Pound Sterling'])[1]"));
         monedaLibra.click();
 
-        //Baja el scroll para ver cuanto precio tiene la Mac (ahora en Euros)
+        //Baja el scroll para ver cuanto precio tiene la Mac (ahora en Libras Esterlinas)
         Thread.sleep(2000);
         JavascriptExecutor jslibra = (JavascriptExecutor) driver;
         jslibra.executeScript("window.scroll(0,300)");
 
-        //Se copia el valor en Euros en la variable "euro"
+        //Se copia el valor en Libras Esterlinas en la variable "libra"
         Thread.sleep(5000);
         String libra = driver.findElement(By.xpath("(//p[@class='price'])[1]")).getText();
-        //System.out.println(libra);
+        System.out.println(libra);
 
         JOptionPane.showMessageDialog(null, "Mostrar datos de tipo de moneda:\n"
                 + "\nDolar:\n" + dolar

@@ -23,6 +23,7 @@ public class testMario {
     public static void main(String[] args) throws InterruptedException {
         testMario test = new testMario();
         test.abrirChrome();
+        //test.Login(); //Realizar el mismo test pero iniciando sesión con una cuenta ***MISMO RESULTADO***
         test.recorridoTest();
         test.tearDown();
     }
@@ -36,6 +37,22 @@ public class testMario {
         driver.manage().window().maximize(); //Maximizar la ventana que se abre.
         driver.get("http://opencart.abstracta.us/"); //Ruta para abrir la página.
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //Función no me sirvió
+    }
+
+    @Test
+    public void Login() throws InterruptedException { //Mismo código del login realizado en el TestAndres
+        WebElement barra = driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]"));
+        barra.click();
+        Thread.sleep(5000);
+        WebElement registro = driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/ul/li[2]/a"));
+        registro.click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"input-email\"]")).sendKeys("adad@gmail.com");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"input-password\"]")).sendKeys("123456789");
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/form/input")).click();
+        Thread.sleep(2000);        
+        assert driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]")).isDisplayed();
     }
 
     //Se realiza el Test para verificar que los cambios de moneda se hagan correctamente.
@@ -104,7 +121,7 @@ public class testMario {
         JOptionPane.showMessageDialog(null, "Mostrar datos de tipo de moneda:\n"
                 + "\nDolar:\n" + dolar
                 + "\n\nEuro:\n" + euro
-                + "\n\nLibra Esterlina:\n" + libra);
+                + "\n\nLibra Esterlina:\n" + libra); //Esto es solo para verificar resultado
     }
 
     @AfterEach

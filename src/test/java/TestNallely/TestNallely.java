@@ -29,7 +29,6 @@ public class TestNallely {
 
     @Test
     public void test() {
-        //click sobre el search field
         elemento= driver.findElement(By.xpath("//*[@id=\"search\"]/input"));
         driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[4]/div/div[1]/a/img")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
@@ -67,13 +66,15 @@ public class TestNallely {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
         driver.findElement(By.xpath("//*[@id=\"input-payment-zone\"]")).sendKeys("Madrid");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-        driver.findElement(By.xpath("//*[@id=\"input-payment-zone\"]")).click();
+        elemento = driver.findElement(By.xpath("//*[@id=\"input-payment-zone\"]")) ;
+        elemento.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
         driver.findElement(By.xpath("//*[@id=\"input-payment-zone\"]/option[6]")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-        driver.findElement(By.xpath("//*[@id=\"button-guest\"]")).click();
+        elemento = driver.findElement(By.xpath("//*[@id=\"button-guest\"]"));
+        elemento.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
-        driver.findElement(By.xpath("//*[@id=\"collapse-shipping-method\"]/div/p[4]/textarea")).click();
+        elemento=driver.findElement(By.xpath("//*[@id=\"collapse-shipping-method\"]/div/p[4]/textarea"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
         driver.findElement(By.xpath("//*[@id=\"collapse-shipping-method\"]/div/p[4]/textarea")).sendKeys("Test");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
